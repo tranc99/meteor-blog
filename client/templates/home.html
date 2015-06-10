@@ -1,7 +1,10 @@
 <template name="home">
 {{#markdown}}
-{{{exampleHelper}}}
 ## Welcome to my Blog
 Here I am talking about my latest discoveries from the world of JavaScript.
 {{/markdown}}
+
+{{#each postsList}}
+	{{> postInList}}
+{{/each}}
 </template>
