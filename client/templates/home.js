@@ -17,8 +17,4 @@ Template.home.events({
 });
 
 
-Template.home.created = function() {
-	this.autorun(function() {
-		alert(Session.get('mySessionExample'));
-	});
-};
+
