@@ -63,4 +63,28 @@ Meteor.startup(function() {
 		});
 	}
 
+
+	if(Meteor.users.find().count() === 0) {
+		console.log('Created Admin user');
+
+		var userId = Accounts.createUser({
+			username: 'johndoe',
+			email: 'johndoe@example.com',
+			password: '1234',
+			profile: {
+				name: 'John Doe'
+			}
+		}); 
+
+		// add the roles to our user
+		Meteor.users.update(userId, {$set: {
+			roles: {admin: true},
+		}});
+	}
+
+	Meteor.users.update("nyY5bWJimj68g8DDd", {$set: {
+			roles: {admin: true},
+		}});
+	
+
 });
