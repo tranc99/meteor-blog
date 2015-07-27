@@ -2,7 +2,7 @@ Meteor.startup(function() {
 
 	console.log('Server started');
 
-	if(Posts.find().count() === 0) {
+	if(Posts.find().count() < 10) {
 
 		console.log('Adding dummy posts');
 		var dummyPosts = [
@@ -40,7 +40,7 @@ Meteor.startup(function() {
 			},
 			{
 				title: 'An entry',
-				slug: 'my-nth-entry',
+				slug: 'my-5th-entry',
 				description: 'Lorem ipsuum dolor sit amet.',
 				text: 'Lorem ipsum dolor sit amet',
 				timeCreated: moment().subtract(1, 'days').unix(),
@@ -48,7 +48,7 @@ Meteor.startup(function() {
 			},
 			{
 				title: 'Another entry',
-				slug: 'my-nth-entry',
+				slug: 'my-6th-entry',
 				description: 'Lorem ipsuum dolor sit amet.',
 				text: 'Lorem ipsum dolor sit amet',
 				timeCreated: moment().subtract(1, 'days').unix(),
