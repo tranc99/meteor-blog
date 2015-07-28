@@ -23,3 +23,17 @@ Accounts.config({
 if(Meteor.isClient) {
 	Meteor.subscribe("userRoles");
 }
+
+if (Meteor.isClient) {
+	ReactiveTimer = new Tracker.Dependency;
+
+	Meteor.setInterval(function() {
+		//rerun dependencies every 10s
+		ReactiveTimer.changed();
+	}, 10000);
+
+	Tracker.autorun(function() {
+		ReactiveTimer.depend();
+		console.log('Function re-run');
+	});
+}
