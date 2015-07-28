@@ -1,3 +1,11 @@
+Session.setDefault('saveButton', 'Save Post');
+
+Template.editPost.helpers({
+	saveButtonText: function () {
+		return Session.get('saveButton');
+	}
+});
+
 Template.editPost.events({
 	'submit form': function(e, tmpl) {
 		e.preventDefault();
