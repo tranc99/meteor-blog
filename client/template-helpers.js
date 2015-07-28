@@ -1,6 +1,7 @@
 Template.registerHelper('formatTime', function(time, type) {
 	
-	ReactiveTimer.depend();
+	//time.tick();
+
 	switch(type) {
 		case 'fromNow':
 			return moment.unix(time).fromNow();
