@@ -30,25 +30,22 @@ Template.editPost.events({
 		} else {
 			var slug = _.slugify(form.title.value);
 
-			// save the post in the collection
-			Posts.insert({
+			Meteor.call('insertPost', {
 				title: 			form.title.value,
 				slug: 			slug,
 				description: 	form.description.value,
 				text: 			form.text.value,
-				timeCreated:  	moment().unix(),
-				author: 		user.profile.name,
-				owner: 			user._id
+			}, function(error, slug) {
+				Session.set('saveButton', 'Save Post');
 
-			}, function(error) {
 				if(error) {
-					//display the error to the user
-					alert(error.reason);
-				} else {
-					//redirect to the post
-					Router.go('Post', {slug: slug});
+					return alert(error.reason);
 				}
+
+				// Here we use the slug from the server side
+				Router.go('Post', {slug: slug});
 			});
+			
 		}
 	}
 });
